@@ -1,0 +1,34 @@
+Se debe correr en una consola que tenga: python2, python3, sed, awk, grep, tac, cut ... básicamente una consola de un linux no muy exótico
+
+1) Copiar todas las cedulas en el archivo enlaces/input.txt
+2) Ejecutar ext.sh
+
+Ojo! Si la persona tiene bloqueado su CvLac o no tiene, no se va a mostrar nada de esa persona
+
+
+Como una persona puede ir a un evento con muchos trabajos y no supe como dejar cada trabajo en una línea única hay que acomodar el archivo
+de eventos una vez finaliza el ext.sh. Debe haber métodos mucho más eficientes pero yo lo hice con un macro que se debería ejecutar desde 
+la celda k1
+
+Sub ponencias1()
+'
+' ponencias1 Macro
+'
+' Keyboard Shortcut: Ctrl+Shift+A
+'
+For i = 1 To 1000
+    Selection.End(xlDown).Select
+    ActiveCell.Offset(1, 0).Rows("1:1").EntireRow.Select
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    ActiveCell.Offset(-1, 10).Range("A1").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Selection.Cut
+    ActiveCell.Offset(1, -2).Range("A1").Select
+    ActiveSheet.Paste
+    ActiveCell.Offset(-1, -8).Range("A1:H1").Select
+    Selection.Copy
+    ActiveCell.Offset(1, 0).Range("A1").Select
+    ActiveSheet.Paste
+    ActiveCell.Offset(-2, 10).Range("A1").Select
+Next i
+End Sub
