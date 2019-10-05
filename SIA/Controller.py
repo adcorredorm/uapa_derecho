@@ -17,7 +17,7 @@ class Controller:
     if valid:
       Controller.valid_counter.value += 1
     
-    print(Controller.counter.value, '/', Controller.total_size)
+    print('SIA:', Controller.counter.value, '/', Controller.total_size)
   
   def add_student(period, carrer_code, carrer_name, progress, total_progress):
     if period not in Controller.periods:

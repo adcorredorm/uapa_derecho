@@ -20,7 +20,7 @@ def is_approved(nota):
 	try:
 		return float(nota) >= 3.0
 	except ValueError:
-		return nota == "AP"
+		return nota in ("AP", "AS")
 
 def resumen(res, name, carrer):
 	string = res.dni + "\t" + name + "\t" + res.programa + "\t" + carrer + "\t"

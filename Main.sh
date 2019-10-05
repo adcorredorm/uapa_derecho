@@ -9,7 +9,7 @@ cd ..
 ### Ejecucion del script de cvlac ###
 cd colciencias
 mkdir -p resultados
-./ext.sh > /dev/null &
+./ext.sh &
 pid_cv=$!
 cd ..
 
@@ -17,18 +17,15 @@ cd ..
 cd SIA
 mkdir -p Resultados
 pip install -r requirements.txt > /dev/null
-python Main.py 1 > logs &
+python Main.py 10 &
 pid_py=$!
 cd ..
 
 ### Espera de que terminen los informes
 mkdir -p Resultados
-echo "Esperando"
-wait $pid_py
-echo "Termino sia"
-cp SIA/Resultados/Compilado.xlsx Resultados/
 wait $pid_cv
-echo "Termino cvlac"
+wait $pid_py
+cp SIA/Resultados/Compilado.xlsx Resultados/
 
 echo "Done"
 

@@ -11,9 +11,9 @@
 
 
 #Consigue los enlaces
-rm enlaces/output.txt
+rm enlaces/output.txt 2> /dev/null
 cd enlaces
-python3 mainCvLac.py  # Hecho por Daniel Escobar
+python3 mainCvLac.py  > /dev/null # Hecho por Daniel Escobar
 cd ..
 sed 's/,.*//' enlaces/output.txt > cedulas
 sed 's/^.*\(,.*\)/\1/g' enlaces/output.txt | sed 's/,//g' > links
@@ -39,12 +39,11 @@ do
   p=$(sed "${l}q;d" links)
   ide=$(sed "${l}q;d" cedulas)
 
-echo ----------------
-echo $l"/"$t" -- "$ide
+echo "col: "$l"/"$t" -- "$ide
 
 
 #Descarga el html del link
-curl -k $p > cvlac.txt
+curl -s -k $p > cvlac.txt
 
 sed -i 's/&#.....;//g' cvlac.txt #Quita caracteres raros
 sed -i 's/&#....;//g' cvlac.txt #Quita caracteres raros
@@ -540,6 +539,6 @@ sed -n 'p' rec >> reconocimientos
 done
 
 rm art cap eve lib sof pro red idi tit com imp tra rec cvlac.txt
-rm resultados/* > /dev/null
+rm resultados/* 2> /dev/null 
 mv articulos capitulos eventos libros prototipos redes software idiomas titulos comites impresos traducciones reconocimientos resultados
 rm cedulas links
