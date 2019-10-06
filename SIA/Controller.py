@@ -12,6 +12,7 @@ class Controller:
   periods = manager.dict()
   subjects = manager.dict() 
 
+  @staticmethod
   def increase_counter(valid = True):
     Controller.counter.value += 1
     if valid:
@@ -19,6 +20,7 @@ class Controller:
     
     print('SIA:', Controller.counter.value, '/', Controller.total_size)
   
+  @staticmethod
   def add_student(period, carrer_code, carrer_name, progress, total_progress):
     if period not in Controller.periods:
       Controller.periods[period] = Controller.manager.dict()
@@ -31,12 +33,11 @@ class Controller:
         "total_progress": 0
       })
     
-
     Controller.periods[period][carrer_code]["students"] += 1
     Controller.periods[period][carrer_code]["progress"] += progress
     Controller.periods[period][carrer_code]["total_progress"] += total_progress
       
-
+  @staticmethod
   def add_subject(code, name, period, approved = True):
     if code not in Controller.subjects:
       Controller.subjects[code] = Controller.manager.dict({
@@ -52,7 +53,7 @@ class Controller:
     if not approved:
       Controller.subjects[code]["reproved"] += 1
 
-  
+  @staticmethod
   def make_summary():
     
     path = filesSetup.path

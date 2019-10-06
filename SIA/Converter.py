@@ -2,7 +2,7 @@ import xlsxwriter
 import csv
 
 def csv_to_xlsx(csv_paths):
-  book = xlsxwriter.Workbook('Resultados/Compilado.xlsx')
+  book = xlsxwriter.Workbook('Resultados/Compilado_SIA.xlsx')
   bold_f = book.add_format({'bold': True})
 
   for file in csv_paths:
@@ -26,7 +26,7 @@ def csv_to_xlsx(csv_paths):
         line += 1
       
       col = 0
-      for column in column_lengths:
+      for _ in column_lengths:
         sheet.set_column(col, col, column_lengths[col] + 3)
         col += 1
       
