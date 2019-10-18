@@ -17,6 +17,8 @@ Como ejecutar el script:
  3. Rellenar el archivo info.xlsx con las cedulas, nombres y tipo de vinculación de las personas sobre que se quieren consultar.
  4. Ejecuar el archivo Main.sh que se encuentra en la raiz del proyecto.
 
+        ./Main.sh
+
 Cuenta con los siguientes modulos:
   
 **Colciencias**:
