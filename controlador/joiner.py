@@ -46,7 +46,7 @@ files.sort()
 
 for f in files:
 	with open(path + f, 'r+', encoding='Latin-1') as file:
-		data = list(csv.reader(file, delimiter=';'))
+		data = list(csv.reader((line.replace('\0', '') for line in file), delimiter=';'))
 		sheet = book.add_worksheet(f)
 		
 		sheet.write_row(0, 0, titles[f])
