@@ -1,6 +1,6 @@
 ### Recolectando la informacion necesaria para los scripts ##
 cd controlador
-pip install -r requirements.txt > /dev/null
+pip install --user -r requirements.txt > /dev/null
 python separator.py
 cp dnis.txt ../SIA/
 cp dnis.txt ../colciencias/enlaces/
@@ -21,7 +21,7 @@ cd ..
 ### Ejecucion del script del SIA ##
 cd SIA
 mkdir -p Resultados
-pip install -r requirements.txt > /dev/null
+pip install --user -r requirements.txt > /dev/null
 python Main.py 50 &
 pid_py=$!
 cd ..
